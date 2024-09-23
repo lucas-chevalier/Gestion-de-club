@@ -1,4 +1,4 @@
-@section('title', 'Projet')
+@section('title', 'Club')
 <x-app-layout>
     <div class="antialiased bg-gray-100 min-h-screen text-gray-800">
         <div class="container mx-auto p-8">
@@ -21,7 +21,7 @@
                         <!-- Section pour afficher les technologies -->
                         <div class="mt-4">
                             <div class="text-blue-700 font-bold text-xl mb-2">
-                                Technologies
+                                Domaines
                             </div>
                             @forelse ($project->tags as $tag)
                                 <span class="inline-block bg-blue-500 text-white px-2 py-1 rounded-full mr-2 mb-2">
