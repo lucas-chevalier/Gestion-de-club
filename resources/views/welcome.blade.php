@@ -13,7 +13,7 @@
                                 <div class="flex justify-center items-center mb-2">
                                     <img src="{{ asset("storage/projects/images/" . basename($project->image)) }}" alt="" class="rounded-lg max-w-full max-h-48">
                                 </div>
-                                <p class="text-gray-600 font-bold">Chef de projet: {{ $project->owner->username }}</p>
+                                <p class="text-gray-600 font-bold">Chef de club: {{ $project->owner->username }}</p>
                             </div>
                         </a>
                     </div>

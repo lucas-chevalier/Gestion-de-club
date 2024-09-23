@@ -12,7 +12,7 @@
         <form action="{{ route('project.create.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mt-6">
-                <x-label for="title" value="{{ __('Nom du projet') }}" class="text-lg" />
+                <x-label for="title" value="{{ __('Nom du club') }}" class="text-lg" />
                 <x-input id="title" class="block w-full mt-2" type="text" name="title" required autofocus />
             </div>
 
@@ -34,8 +34,8 @@
             </div>
 
             <div class="mt-6">
-                <x-label for="tags" value="{{ __('Technologies') }}" class="text-lg" />
-                <x-input id="tags" class="block w-full mt-2" type="text" name="tags" placeholder="Exemple : Docker, Laravel, ect..."/>
+                <x-label for="tags" value="{{ __('Catégories') }}" class="text-lg" />
+                <x-input id="tags" class="block w-full mt-2" type="text" name="tags" placeholder="Exemple : Sport, Culture, ect..."/>
                 <p class="text-gray-900">Conseil : Séparer les domaines par des virgules.</p>
                 <p class="text-red-500" id="tagError"></p>
             </div>

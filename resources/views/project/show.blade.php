@@ -28,7 +28,7 @@
                                     {{ $tag->name }}
                                 </span>
                             @empty
-                                <p class="text-gray-500">Aucun domaine associé.</p>
+                                <p class="text-gray-500">Aucune catégorie associée.</p>
                             @endforelse
                         </div>
                     </div>
