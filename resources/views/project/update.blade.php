@@ -38,7 +38,7 @@
             <div class="mt-6">
                 <x-label for="tags" value="{{ __('Technologies') }}" class="text-lg" />
                 <x-input id="tags" class="block w-full mt-2" type="text" name="tags" value="{{ $tags }}" placeholder="Exemple : Docker, Laravel, ect..."/>
-                <p class="text-gray-900">Conseil : Séparer les technologies par des virgules.</p>
+                <p class="text-gray-900">Conseil : Séparer les domaines par des virgules.</p>
                 <p class="text-red-500" id="tagError"></p>
             </div>
 
@@ -51,7 +51,7 @@
 
             <div class="mt-8 text-center">
                 <x-button>
-                    {{ __('Modifier le projet') }}
+                    {{ __('Modifier le club') }}
                 </x-button>
             </div>
         </form>

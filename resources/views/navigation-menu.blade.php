@@ -73,11 +73,11 @@
                                     </x-dropdown-link>
 
                                     <x-dropdown-link href="{{ route('admin.projects') }}">
-                                        {{ __('Liste des projets') }}
+                                        {{ __('Liste des clubs') }}
                                     </x-dropdown-link>
 
                                     <x-dropdown-link href="{{ route('admin.users') }}">
-                                        {{ __('Liste des utilisateurs') }}
+                                        {{ __('Liste des membres') }}
                                     </x-dropdown-link>
                                 </div>
                             </x-slot>
@@ -91,7 +91,7 @@
                             <x-slot name="trigger">
                             <span class="inline-flex rounded-md">
                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                    Mes projets
+                                    Mes clubs
                                     <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
                                     </svg>
@@ -103,22 +103,22 @@
                                 <div class="w-60">
                                     <!-- Team Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Gérer mes projets') }}
+                                        {{ __('Gérer mes clubs') }}
                                     </div>
 
                                     <!-- Team Settings -->
                                     <x-dropdown-link href="{{ route('dashboard') }}">
-                                        {{ __('Mes projets') }}
+                                        {{ __('Mes clubs') }}
                                     </x-dropdown-link>
 
                                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                                         <x-dropdown-link href="{{ route('project.create.form') }}">
-                                            {{ __('Créer un nouveau projet') }}
+                                            {{ __('Créer un nouveau club') }}
                                         </x-dropdown-link>
                                     @endcan
 
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Liste de mes projets') }}
+                                        {{ __('Liste de mes clubs') }}
                                     </div>
                                     @if(Auth::user()->projects->count() > 0)
                                         @foreach(Auth::user()->projects as $project)
@@ -128,7 +128,7 @@
                                         @endforeach
                                     @else
                                         <div class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700">
-                                            {{ __('Vous n\'avez pas encore de projets') }}
+                                            {{ __('Vous n\'avez pas encore de clubs') }}
                                         </div>
                                     @endif
                                 </div>
@@ -245,19 +245,19 @@
                     <div class="border-t border-gray-200"></div>
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Gérer mes projets') }}
+                        {{ __('Gérer mes clubs') }}
                     </div>
 
                     <x-dropdown-link href="{{ route('dashboard') }}">
-                        {{ __('Mes projets') }}
+                        {{ __('Mes clubs') }}
                     </x-dropdown-link>
 
                     <x-dropdown-link href="{{ route('project.create.form') }}" :active="request()->routeIs('project.create.form')">
-                        {{ __('Créer un nouveau projet') }}
+                        {{ __('Créer un nouveau club') }}
                     </x-dropdown-link>
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Liste de mes projets') }}
+                        {{ __('Liste de mes clubs') }}
                     </div>
 
                     @if(Auth::user()->projects->count() > 0)
@@ -268,7 +268,7 @@
                         @endforeach
                     @else
                         <div class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700">
-                            {{ __('Vous n\'avez pas encore de projets') }}
+                            {{ __('Vous n\'avez pas encore de clubs') }}
                         </div>
                     @endif
 
@@ -285,11 +285,11 @@
                             </x-dropdown-link>
 
                             <x-dropdown-link href="{{ route('admin.projects') }}">
-                                {{ __('Liste des projets') }}
+                                {{ __('Liste des clubs') }}
                             </x-dropdown-link>
 
                             <x-dropdown-link href="{{ route('admin.users') }}">
-                                {{ __('Liste des utilisateurs') }}
+                                {{ __('Liste des membres') }}
                             </x-dropdown-link>
                         </div>
                     @endif

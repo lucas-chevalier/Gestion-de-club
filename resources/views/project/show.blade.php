@@ -28,7 +28,7 @@
                                     {{ $tag->name }}
                                 </span>
                             @empty
-                                <p class="text-gray-500">Aucune technologie associée.</p>
+                                <p class="text-gray-500">Aucun domaine associé.</p>
                             @endforelse
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                                                 </div>
                                             @else
                                                 <button onclick="openJoinProjectModal()" class="w-full justify-center inline-flex items-center px-4 py-2 border border-yellow-500 text-sm leading-5 font-medium rounded-md text-yellow-500 hover:bg-yellow-100 focus:outline-none focus:border-yellow-600 focus:shadow-outline-yellow active:bg-yellow-200 transition duration-150 ease-in-out">
-                                                    Demander à rejoindre le projet
+                                                    Demander à rejoindre le club
                                                 </button>
                                                 @include('project.join-project-popup')
                                             @endif
@@ -115,7 +115,7 @@
                                     @endcannot
                                 @else
                                     <div class="mt-6 p-4 bg-gray-100 border border-gray-300 text-gray-700 rounded-md">
-                                        <span class="font-semibold">Info :</span> Vous devez être connecté pour interagir avec le projet.
+                                        <span class="font-semibold">Info :</span> Vous devez être connecté pour interagir avec le club.
                                     </div>
                                 @endif
                             </div>
@@ -124,7 +124,7 @@
                             @can('update-project', $team)
                                 <div class="w-full mx-auto">
                                     <a href="{{ route("project.update.form", ['id' => $project->id]) }}" class="w-full inline-flex items-center justify-center px-6 py-2 border border-blue-500 text-sm leading-5 font-medium rounded-md text-blue-700 hover:bg-blue-100 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue active:bg-blue-200 transition duration-150 ease-in-out">
-                                        Modifier le projet
+                                        Modifier le club
                                     </a>
                                 </div>
                             @endcan
@@ -132,7 +132,7 @@
                             @can('delete-project', $team)
                                 <div class="w-full">
                                     <button onclick="openDeleteProjectModal()" class="w-full inline-flex items-center justify-center px-6 py-2 border border-red-500 text-sm leading-5 font-medium rounded-md text-red-500 hover:bg-red-100 focus:outline-none focus:border-red-600 focus:shadow-outline-red active:bg-red-200 transition duration-150 ease-in-out">
-                                        Supprimer le projet
+                                        Supprimer le club
                                     </button>
                                     @include('project.delete-popup')
                                 </div>

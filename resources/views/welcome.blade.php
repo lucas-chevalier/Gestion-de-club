@@ -19,7 +19,7 @@
                     </div>
                 @endforeach
             @else
-                <p class="text-gray-700 text-center w-full">Aucun équipe disponible pour le moment.</p>
+                <p class="text-gray-700 text-center w-full">Aucun club disponible pour le moment.</p>
             @endif
         </div>
     </div>

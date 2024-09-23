@@ -7,7 +7,7 @@
 
         <x-validation-errors class="mb-6" />
 
-        <div class="text-2xl font-semibold text-center mb-8">{{ __('Créer un nouveau projet') }}</div>
+        <div class="text-2xl font-semibold text-center mb-8">{{ __('Créer un nouveau club') }}</div>
 
         <form action="{{ route('project.create.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -36,7 +36,7 @@
             <div class="mt-6">
                 <x-label for="tags" value="{{ __('Technologies') }}" class="text-lg" />
                 <x-input id="tags" class="block w-full mt-2" type="text" name="tags" placeholder="Exemple : Docker, Laravel, ect..."/>
-                <p class="text-gray-900">Conseil : Séparer les technologies par des virgules.</p>
+                <p class="text-gray-900">Conseil : Séparer les domaines par des virgules.</p>
                 <p class="text-red-500" id="tagError"></p>
             </div>
 
@@ -48,7 +48,7 @@
 
             <div class="mt-8 text-center">
                 <x-button>
-                    {{ __('Créer un projet') }}
+                    {{ __('Créer un club') }}
                 </x-button>
             </div>
         </form>
