@@ -2,7 +2,7 @@
 
 namespace App\Actions\Jetstream;
 
-use App\Models\Project;
+use App\Models\Club;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
@@ -24,9 +24,9 @@ class UpdateTeamName implements UpdatesTeamNames
             'name' => ['required', 'string', 'max:255'],
         ])->validateWithBag('updateTeamName');
 
-        $project = Project::where('id', $team->project_id);
+        $club = Club::where('id', $team->club_id);
 
-        $project->update([
+        $club->update([
             'title' => $input['name']
         ]);
 
