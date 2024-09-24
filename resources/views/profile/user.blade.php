@@ -32,24 +32,24 @@
                     </div>
                 </div>
 
-                <!-- Carte des projets -->
+                <!-- Carte des clubs -->
                 <div class="col-span-3 md:col-span-2">
                     <div class="bg-white p-6 rounded-md shadow-md">
-                        <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Projets</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Clubs</h2>
                         @if($user->allTeams()->isEmpty())
-                            <p class="text-gray-600">Cet utilisateur n'est membre d'aucun projet.</p>
+                            <p class="text-gray-600">Cet utilisateur n'est membre d'aucun club.</p>
                         @else
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                @foreach($user->allTeams() as $index => $project)
+                                @foreach($user->allTeams() as $index => $club)
                                     <div class="{{ $index > 1 ? 'md:col-span-1' : '' }} mb-4">
-                                        <a href="{{ route('project.show', ['id' => $project->id]) }}">
-                                            <h3 class="text-xl font-semibold text-blue-600 hover:underline">{{ $project->name }}</h3>
+                                        <a href="{{ route('club.show', ['id' => $club->id]) }}">
+                                            <h3 class="text-xl font-semibold text-blue-600 hover:underline">{{ $club->name }}</h3>
                                         </a>
                                         <p class="text-gray-500">
-                                            @if ($user->teamRole($project)->key == 'owner')
+                                            @if ($user->teamRole($club)->key == 'owner')
                                                 Propriétaire
                                             @else
-                                                {{ Laravel\Jetstream\Jetstream::findRole($user->teamRole($project)->key)->name }}
+                                                {{ Laravel\Jetstream\Jetstream::findRole($user->teamRole($club)->key)->name }}
                                             @endif
                                         </p>
                                     </div>
