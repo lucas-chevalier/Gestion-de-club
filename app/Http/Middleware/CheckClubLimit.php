@@ -19,7 +19,7 @@ class CheckClubLimit
     {
         if (Auth::check() && Auth::user()->allTeams()->count() >= 5) {
             return redirect()->back()->dangerBanner(
-                __('Vous avez atteint la limite de projets.'),
+                __('Vous avez atteint la limite de clubs.'),
             );
         }
 
