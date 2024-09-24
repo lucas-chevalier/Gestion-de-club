@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
+use App\Models\Club;
 use App\Models\Team;
 use App\Models\TeamJoinRequest;
 use App\Mail\MailJoinRequest;

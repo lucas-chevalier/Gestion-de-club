@@ -1,6 +1,6 @@
 @section('title', 'Créer une équipe')
 <x-app-layout>
-    <x-project-card>
+    <x-club-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
@@ -9,7 +9,7 @@
 
         <div class="text-2xl font-semibold text-center mb-8">{{ __('Créer un nouveau club') }}</div>
 
-        <form action="{{ route('project.create.post') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('club.create.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mt-6">
                 <x-label for="title" value="{{ __('Nom du club') }}" class="text-lg" />
@@ -52,7 +52,7 @@
                 </x-button>
             </div>
         </form>
-    </x-project-card>
+    </x-club-card>
 </x-app-layout>
 
 <script>

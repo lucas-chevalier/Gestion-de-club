@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\TeamController;
 use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckProjectLimit;
+use App\Http\Middleware\CheckClubLimit;
 use App\Http\Middleware\IsUserBanned;
 
 /*
@@ -20,7 +20,7 @@ use App\Http\Middleware\IsUserBanned;
 |
 */
 
-Route::get('/', [ProjectController::class, 'index'])->name('home');
+Route::get('/', [ClubController::class, 'index'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -28,26 +28,26 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
-    Route::middleware([CheckProjectLimit::class])->group(function (){
-        Route::post('/project/create', [ProjectController::class, 'create'])
-            ->name('project.create.post');
+    Route::middleware([CheckClubLimit::class])->group(function (){
+        Route::post('/club/create', [ClubController::class, 'create'])
+            ->name('club.create.post');
 
         Route::get('/team/accept/{id}', [TeamController::class, 'acceptInvitation'])
             ->name('team.accept');
     });
 
-    Route::get('/project/create', function() {
-        return view('project.create');
-    })->name('project.create.form');
+    Route::get('/club/create', function() {
+        return view('club.create');
+    })->name('club.create.form');
 
-    Route::delete('/project/delete/{id}', [ProjectController::class, 'delete'])
-    ->name('project.delete');
+    Route::delete('/club/delete/{id}', [ClubController::class, 'delete'])
+    ->name('club.delete');
 
-    Route::put('/project/update/{id}', [ProjectController::class, 'update'])
-    ->name('project.update');
+    Route::put('/club/update/{id}', [ClubController::class, 'update'])
+    ->name('club.update');
 
-    Route::get('/project/update/{id}', [ProjectController::class, 'updateForm'])
-        ->name('project.update.form');
+    Route::get('/club/update/{id}', [ClubController::class, 'updateForm'])
+        ->name('club.update.form');
 
     Route::post('/team/join', [TeamController::class, 'sendInvitation'])
     ->name('team.join');
@@ -63,8 +63,8 @@ Route::middleware([
         Route::get('/admin/users/banned', [AdminController::class, 'listBannedUsers'])
             ->name('admin.users.banned');
 
-        Route::get('/admin/projects', [AdminController::class, 'listProjects'])
-            ->name('admin.projects');
+        Route::get('/admin/clubs', [AdminController::class, 'listclubs'])
+            ->name('admin.clubs');
 
         Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
             ->name('admin.dashboard');
@@ -80,8 +80,8 @@ Route::middleware([
     });
 });
 
-Route::get('/project/show/{id}', [ProjectController::class, 'show'])
-->name('project.show');
+Route::get('/club/show/{id}', [ClubController::class, 'show'])
+->name('club.show');
 
 Route::get('/{username}', [ProfileController::class, 'show'])
     ->name('user.show');

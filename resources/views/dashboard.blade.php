@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
                     <h3 class="text-2xl font-semibold mb-4 sm:mb-0">Mes clubs</h3>
-                    <a href="{{ route('project.create.form') }}" class="inline-flex items-center px-4 py-2 border border-pink-500 text-pink-500 rounded-md hover:bg-pink-100 hover:text-pink-700 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue active:bg-blue-600 transition duration-300 ease-in-out">Créer un nouveau club</a>
+                    <a href="{{ route('club.create.form') }}" class="inline-flex items-center px-4 py-2 border border-pink-500 text-pink-500 rounded-md hover:bg-pink-100 hover:text-pink-700 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue active:bg-blue-600 transition duration-300 ease-in-out">Créer un nouveau club</a>
                 </div>
                 <ul class="divide-y divide-gray-200">
                     @forelse($teams as $team)
@@ -27,7 +27,7 @@
                                 </p>
                             </div>
                             <div class="flex space-x-2 sm:space-x-4">
-                                <a href="{{ route('project.show', ['id' => $team->project_id]) }}" class="inline-flex items-center px-4 py-2 border border-blue-500 text-blue-500 rounded-md hover:bg-blue-100 hover:text-blue-700 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue active:bg-blue-600 transition duration-300 ease-in-out">Voir le Club</a>
+                                <a href="{{ route('club.show', ['id' => $team->project_id]) }}" class="inline-flex items-center px-4 py-2 border border-blue-500 text-blue-500 rounded-md hover:bg-blue-100 hover:text-blue-700 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue active:bg-blue-600 transition duration-300 ease-in-out">Voir le Club</a>
                                 <a href="{{ route('teams.show', ['team' => $team->id]) }}" class="inline-flex items-center px-4 py-2 border border-yellow-600 text-yellow-600 rounded-md hover:bg-yellow-100 hover:text-yellow-700 focus:outline-none focus:border-green-600 focus:shadow-outline-green active:bg-green-600 transition duration-300 ease-in-out">Voir l'Équipe</a>
                             </div>
                         </li>

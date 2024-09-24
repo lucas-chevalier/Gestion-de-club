@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
+use App\Models\Club;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -33,22 +33,22 @@ class AdminController extends Controller
         ]);
     }
 
-    public function listProjects(): View|RedirectResponse
+    public function listclubs(): View|RedirectResponse
     {
-        $projects = Project::paginate(10);
+        $clubs = Club::paginate(10);
 
-        return view('admin.projects', [
-            'projects' => $projects,
+        return view('admin.clubs', [
+            'clubs' => $clubs,
         ]);
     }
 
     public function dashboard(): View|RedirectResponse
     {
-        $projects = Project::paginate(5);
+        $clubs = Club::paginate(5);
         $users = User::paginate(5);
 
         return view('admin.dashboard', [
-            'projects' => $projects,
+            'clubs' => $clubs,
             'users' => $users,
         ]);
     }

@@ -12,11 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('clubs', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
             $table->string('description', 1080);
             $table->string('image');
+            $table->integer('nombre de membres actuel')->default(1);;
+            $table->integer('nombre de membres max')->default(50);
             $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')->on('users')->references('id');
             $table->foreignId('status_id');
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('clubs');
     }
 };

@@ -72,7 +72,7 @@
                                         {{ __('Tableau de bord') }}
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link href="{{ route('admin.projects') }}">
+                                    <x-dropdown-link href="{{ route('admin.clubs') }}">
                                         {{ __('Liste des clubs') }}
                                     </x-dropdown-link>
 
@@ -112,7 +112,7 @@
                                     </x-dropdown-link>
 
                                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                        <x-dropdown-link href="{{ route('project.create.form') }}">
+                                        <x-dropdown-link href="{{ route('club.create.form') }}">
                                             {{ __('Créer un nouveau club') }}
                                         </x-dropdown-link>
                                     @endcan
@@ -120,10 +120,10 @@
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         {{ __('Liste de mes clubs') }}
                                     </div>
-                                    @if(Auth::user()->projects->count() > 0)
-                                        @foreach(Auth::user()->projects as $project)
-                                            <x-dropdown-link href="{{ route('project.show', ['id' => $project->id]) }}">
-                                                {{ __($project->title) }}
+                                    @if(Auth::user()->clubs && Auth::user()->clubs->count() > 0)
+                                        @foreach(Auth::user()->clubs as $club)
+                                            <x-dropdown-link href="{{ route('club.show', ['id' => $club->id]) }}">
+                                                {{ __($club->title) }}
                                             </x-dropdown-link>
                                         @endforeach
                                     @else
@@ -252,7 +252,7 @@
                         {{ __('Mes clubs') }}
                     </x-dropdown-link>
 
-                    <x-dropdown-link href="{{ route('project.create.form') }}" :active="request()->routeIs('project.create.form')">
+                    <x-dropdown-link href="{{ route('club.create.form') }}" :active="request()->routeIs('club.create.form')">
                         {{ __('Créer un nouveau club') }}
                     </x-dropdown-link>
 
@@ -260,10 +260,10 @@
                         {{ __('Liste de mes clubs') }}
                     </div>
 
-                    @if(Auth::user()->projects->count() > 0)
-                        @foreach(Auth::user()->projects as $project)
-                            <x-dropdown-link href="{{ route('project.show', ['id' => $project->id]) }}">
-                                {{ __($project->title) }}
+                    @if(Auth::user()->clubs->count() > 0)
+                        @foreach(Auth::user()->clubs as $club)
+                            <x-dropdown-link href="{{ route('club.show', ['id' => $club->id]) }}">
+                                {{ __($club->title) }}
                             </x-dropdown-link>
                         @endforeach
                     @else
@@ -284,7 +284,7 @@
                                 {{ __('Tableau de bord') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link href="{{ route('admin.projects') }}">
+                            <x-dropdown-link href="{{ route('admin.clubs') }}">
                                 {{ __('Liste des clubs') }}
                             </x-dropdown-link>
 

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Project;
+use App\Models\Club;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Status;
@@ -26,10 +26,10 @@ use Intervention\Image\ImageManager;
 use Mockery\Exception;
 use Intervention\Image\Image;
 
-class ProjectController extends Controller
+class ClubController extends Controller
 {
     /**
-     * Create a project
+     * Create a club
      *
      * @param Request $request
      * @return RedirectResponse
@@ -37,17 +37,17 @@ class ProjectController extends Controller
     public function create(Request $request): RedirectResponse
     {
         try {
-            $validator = Validator::make($request->all(), Project::$rules, Project::$messages);
+            $validator = Validator::make($request->all(), Club::$rules, Club::$messages);
 
             if ($validator->fails()) {
                 return abort(Response::HTTP_FORBIDDEN);
             }
 
             $image = $this->isImage($request);
-            $project = Project::create([
+            $club = Club::create([
                 'title' => $request->title,
                 'description' => $request->description,
-                'image' => (isset($image)) ? 'storage/projects/images/' . $image : "storage/projects/images/default.png",
+                'image' => (isset($image)) ? 'storage/clubs/images/' . $image : "storage/clubs/images/default.png",
                 'owner_id' => Auth::id(),
                 'status_id' => $request->status_id,
             ]);
@@ -56,17 +56,17 @@ class ProjectController extends Controller
                 'name' => $request->title,
                 'personal_team' => 1,
                 'user_id' => Auth::id(),
-                'project_id' => $project->id
+                'club_id' => $club->id
             ]);
 
             $tags = $request->input('tags');
             $tags = explode(',', $tags);
 
             foreach ($tags as $tag) {
-                Tag::create(['name' => $tag, 'project_id' => $project->id]);
+                Tag::create(['name' => $tag, 'club_id' => $club->id]);
             }
 
-            return to_route('project.show', ['id' => $project->id]);
+            return to_route('club.show', ['id' => $club->id]);
         } catch (\Exception $e) {
             Log::error("Impossible de créer le projet ou l'équipe : " . $e->getMessage());
             return redirect()->back()->dangerBanner(
@@ -76,22 +76,22 @@ class ProjectController extends Controller
     }
 
     /**
-     * Delete a project
+     * Delete a club
      *
-     * @param int $projectId
+     * @param int $clubId
      * @return RedirectResponse
      */
-    public function delete(int $projectId): RedirectResponse|Response
+    public function delete(int $clubId): RedirectResponse|Response
     {
         try {
-            $team = Team::where('project_id', $projectId)->firstorFail();
-            if (Gate::denies('delete-project', $team)) {
+            $team = Team::where('club_id', $clubId)->firstorFail();
+            if (Gate::denies('delete-club', $team)) {
                 abort(403);
             }
 
-            Project::destroy($projectId);
-            Team::where('project_id', $projectId)->delete();
-            Tag::where('project_id', $projectId)->delete();
+            Club::destroy($clubId);
+            Team::where('club_id', $clubId)->delete();
+            Tag::where('club_id', $clubId)->delete();
 
             return to_route('home');
         } catch (ModelNotFoundException $e) {
@@ -107,7 +107,7 @@ class ProjectController extends Controller
 
 
     /**
-     * Retrieve a unique project
+     * Retrieve a unique club
      *
      * @param int $id
      * @return View|RedirectResponse
@@ -115,17 +115,17 @@ class ProjectController extends Controller
     public function show(int $id): View|RedirectResponse|Response
     {
         try {
-            $project = Project::findOrFail($id);
+            $club = Club::findOrFail($id);
 
-            $isAlreadyJoinRequest = TeamJoinRequest::where('user_id', Auth::id())->where('team_id', $project->team->id)->first();
+            $isAlreadyJoinRequest = TeamJoinRequest::where('user_id', Auth::id())->where('team_id', $club->team->id)->first();
 
-            return view('project.show',[
-                'project' => $project,
-                'users' => $project->team->users,
-                'owner' => $project->owner,
-                'team' => $project->team,
+            return view('club.show',[
+                'club' => $club,
+                'users' => $club->team->users,
+                'owner' => $club->owner,
+                'team' => $club->team,
                 'isAlreadyJoinRequest' => $isAlreadyJoinRequest,
-                'tags' => $project->tags
+                'tags' => $club->tags
             ]);
         } catch (ModelNotFoundException $e) {
             Log::error("Impossible de récupérer les informations du projet : " . $e->getMessage());
@@ -139,40 +139,40 @@ class ProjectController extends Controller
     }
 
     /**
-     * Retrieve all projects
+     * Retrieve all clubs
      *
      * @return View|RedirectResponse
      */
     public function index(): View|RedirectResponse
     {
-        $projects = Project::all();
+        $clubs = Club::all();
 
         return view('welcome', [
-            'projects' => $projects
+            'clubs' => $clubs
         ]);
     }
 
     /**
-     * Update the project
+     * Update the club
      *
      * @param Request $request
-     * @param int $projectId
+     * @param int $clubId
      * @return RedirectResponse
      */
-    public function update(Request $request, int $projectId): RedirectResponse|Response
+    public function update(Request $request, int $clubId): RedirectResponse|Response
     {
         try {
-            $team = Team::where('project_id', $projectId)->firstorFail();
-            $project = Project::findOrFail($projectId);
+            $team = Team::where('club_id', $clubId)->firstorFail();
+            $club = club::findOrFail($clubId);
             $image = $this->isImage($request);
-            $oldTags = Tag::all()->where('project_id', $project->id)->pluck('name')->toArray();
+            $oldTags = Tag::all()->where('club_id', $club->id)->pluck('name')->toArray();
             $newTags = explode(',', $request->tags);
 
-            if (Gate::denies('update-project', $team)) {
+            if (Gate::denies('update-club', $team)) {
                 abort(403);
             }
 
-            $validator = Validator::make($request->all(), Project::$rules, Project::$messages);
+            $validator = Validator::make($request->all(), Club::$rules, Club::$messages);
 
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
@@ -185,14 +185,14 @@ class ProjectController extends Controller
 
             foreach ($tagsToCreate as $tagName) {
                 if (!empty($tagName)) {
-                    Tag::create(['name' => $tagName, 'project_id' => $projectId]);
+                    Tag::create(['name' => $tagName, 'club_id' => $clubId]);
                 }
             }
 
-            $project->update([
+            $club->update([
                 'title' => $request->title,
                 'description' => $request->description,
-                'image' => (isset($image)) ? 'storage/projects/images/' . $image : $project->image,
+                'image' => (isset($image)) ? 'storage/clubs/images/' . $image : $club->image,
                 'status_id' => $request->status_id
             ]);
 
@@ -200,7 +200,7 @@ class ProjectController extends Controller
                 'name' => $request->title
             ]);
 
-            return redirect()->route('project.show', ['id' => $project->id]);
+            return redirect()->route('club.show', ['id' => $club->id]);
         } catch (ModelNotFoundException $e) {
             Log::error("Impossible de trouver le projet à modifer :" . $e->getMessage());
             return response()->view('errors.404', [], Response::HTTP_NOT_FOUND);
@@ -215,26 +215,26 @@ class ProjectController extends Controller
     /**
      *  Redirect to update form
      *
-     * @param int $projectId
+     * @param int $clubId
      * @return View|RedirectResponse
      */
-    public function updateForm(int $projectId): View|RedirectResponse|Response
+    public function updateForm(int $clubId): View|RedirectResponse|Response
     {
         try {
 
-            $project = Project::findOrFail($projectId);
+            $club = Club::findOrFail($clubId);
             $statuses = Status::all();
-            $team = Team::where('project_id', $projectId)->firstOrFail();
-            $tags = Tag::all()->where('project_id', $project->id)->pluck('name')->toArray();
+            $team = Team::where('club_id', $clubId)->firstOrFail();
+            $tags = Tag::all()->where('club_id', $club->id)->pluck('name')->toArray();
 
             $tags = implode(',', $tags);
 
-            if (Gate::denies('update-project', ['team' => $team])) {
+            if (Gate::denies('update-club', ['team' => $team])) {
                 abort(403);
             }
 
-            return view('project.update', [
-                'project' => $project,
+            return view('club.update', [
+                'club' => $club,
                 'statuses' => $statuses,
                 'tags' => $tags
             ]);
@@ -250,7 +250,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Store the image of the project in the storage
+     * Store the image of the club in the storage
      *
      * @param Request $request
      * @return string|null
@@ -269,8 +269,8 @@ class ProjectController extends Controller
             // Redimensionnement de l'image avant de la stocker
             $resizedImage = $manager->read($image)->resize(500, 500);
 
-            // Stocker le fichier image redimensionné dans le répertoire "public/projects/images"
-            Storage::put('public/projects/images/' . $imageName, $resizedImage->encode());
+            // Stocker le fichier image redimensionné dans le répertoire "public/clubs/images"
+            Storage::put('public/clubs/images/' . $imageName, $resizedImage->encode());
 
             return $imageName;
         } else {

@@ -9,20 +9,20 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex space-x-8">
-                <!-- Projets -->
+                <!-- Clubs -->
                 <div class="w-1/2">
-                    <x-dashboard-section title="Projets">
-                        @foreach ($projects as $project)
+                    <x-dashboard-section title="Clubs">
+                        @foreach ($clubs as $club)
                             <div class="mb-4">
-                                <a href="{{ route('project.show', ['id' => $project->id]) }}">
-                                    <x-dashboard-item :name="$project->title" :link="route('project.show', ['id', $project->id])" />
+                                <a href="{{ route('club.show', ['id' => $club->id]) }}">
+                                    <x-dashboard-item :name="$club->title" :link="route('club.show', ['id', $club->id])" />
                                 </a>
                             </div>
                         @endforeach
                         <div class="mt-4">
-                            <a href="{{ route('admin.projects') }}">
+                            <a href="{{ route('admin.clubs') }}">
                                 <x-button class="w-full">
-                                    {{ __('Voir plus de projets...') }}
+                                    {{ __('Voir plus de clubs...') }}
                                 </x-button>
                             </a>
                         </div>
