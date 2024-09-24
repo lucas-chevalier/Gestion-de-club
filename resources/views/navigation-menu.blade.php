@@ -66,6 +66,9 @@
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         {{ __('Administration') }}
                                     </div>
+                                    <x-dropdown-link href="{{ route('admin.clubs.unapproved') }}">
+                                        Voir les clubs non approuvés
+                                    </x-dropdown-link>
 
                                     <!-- Team Settings -->
                                     <x-dropdown-link href="{{ route('admin.dashboard') }}">

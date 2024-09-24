@@ -12,12 +12,12 @@ class Club extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'image', 'owner_id', 'status_id'];
+    protected $fillable = ['title', 'description', 'image', 'owner_id', 'is_approved', 'status_id'];
 
     public static $rules = [
         'title' => 'required|string|max:100',
-        'description' => 'required|string|max:1080',
-        'status_id' => 'required|integer|exists:statuses,id',
+        'description' => 'required|string|max:1080',        
+        'status_id' => 'required|integer|exists:statuses,id', 
     ];
 
     public static $messages = [
@@ -36,17 +36,18 @@ class Club extends Model
         return $this->belongsTo(User::class);
     }
 
+    
     public function status(): belongsTo
     {
         return $this->belongsTo(Status::class);
     }
 
-    public function team(): hasOne
+    public function team(): HasOne
     {
         return $this->hasOne(Team::class);
     }
 
-    public function tags(): hasMany
+    public function tags(): HasMany
     {
         return $this->hasMany(Tag::class);
     }

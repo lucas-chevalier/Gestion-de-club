@@ -57,6 +57,11 @@ Route::middleware([
         ->name('dashboard');
 
     Route::middleware([CheckAdmin::class])->group(function() {
+        Route::get('/admin/clubs/unapproved', [AdminController::class, 'listUnapprovedClubs'])
+            ->name('admin.clubs.unapproved');
+        
+        Route::put('/admin/clubs/approve/{id}', [AdminController::class, 'approveClub'])
+            ->name('admin.club.approve');
         Route::get('/admin/users', [AdminController::class, 'listUsers'])
             ->name('admin.users');
 

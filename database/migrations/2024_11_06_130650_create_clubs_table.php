@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->integer('nombre de membres actuel')->default(1);;
             $table->integer('nombre de membres max')->default(50);
+            $table->boolean('is_approved')->default(false);
             $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')->on('users')->references('id');
             $table->foreignId('status_id');

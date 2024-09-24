@@ -85,4 +85,20 @@ class AdminController extends Controller
 
         return redirect()->back()->with(['message' => 'L\'utilisateur a bien été supprimé.']);
     }
+        public function listUnapprovedClubs(): View|RedirectResponse
+    {
+        $clubs = Club::where('is_approved', false)->paginate(10); // Fetch unapproved clubs
+
+        return view('admin.clubs-unapproved', [
+            'clubs' => $clubs,
+        ]);
+    }
+    public function approveClub(int $clubId): RedirectResponse
+    {
+        $club = Club::findOrFail($clubId);
+        
+        $club->update(['is_approved' => true]); // Set to approved
+
+        return redirect()->back()->with(['message' => 'Le club a été approuvé avec succès.']);
+    }
 }

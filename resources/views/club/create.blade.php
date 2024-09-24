@@ -18,9 +18,9 @@
 
             <div class="mt-6 relative">
                 <x-label for="description" value="{{ __('Description') }}" class="text-lg" />
-                <x-textarea id="description" class="block w-full mt-2 h-40" type="text" name="description" required>{{ old('description') }}</x-textarea>
+                <x-textarea id="description" class="block w-full mt-2 h-40" type="text" name="description" required>{{ old('description', '') }}</x-textarea>
                 <div class="absolute bottom-2 right-2 text-gray-400">
-                    <span id="charCount">{{ mb_strlen(old('description')) }}</span>/1080
+                    <span id="charCount">{{ mb_strlen(old('description', '')) }}</span>/1080
                 </div>
             </div>
 
@@ -61,4 +61,3 @@
         document.getElementById('charCount').innerText = charCount;
     });
 </script>
-
