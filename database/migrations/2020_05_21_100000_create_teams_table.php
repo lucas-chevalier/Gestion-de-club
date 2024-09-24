@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->index();
             $table->string('name');
-            $table->foreignId('project_id')->index();
+            $table->foreignId('club_id')->index();
             $table->boolean('personal_team');
             $table->timestamps();
         });

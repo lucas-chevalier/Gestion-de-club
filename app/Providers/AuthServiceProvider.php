@@ -22,7 +22,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('update-project', function ($user, $team) {
+        Gate::define('update-club', function ($user, $team) {
             return $user->hasTeamRole($team, 'editor') ||
                 $user->hasTeamRole($team, 'admin') ||
                 $user->hasTeamRole($team, 'owner') ||
@@ -30,13 +30,13 @@ class AuthServiceProvider extends ServiceProvider
                 $user->role == 'editor';
         });
 
-        Gate::define('delete-project', function ($user, $team) {
+        Gate::define('delete-club', function ($user, $team) {
             return $user->hasTeamRole($team, 'owner') ||
                 $user->role == 'admin' ||
                 $user->role == 'editor';
         });
 
-        Gate::define('invite-member-project', function($user, $team) {
+        Gate::define('invite-member-club', function($user, $team) {
             return $user->hasTeamRole($team, 'owner') ||
                 $user->hasTeamRole($team, 'admin');
         });

@@ -10,10 +10,10 @@ class Tag extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'project_id'];
+    protected $fillable = ['name', 'club_id'];
 
-    public function project(): BelongsTo
+    public function club(): BelongsTo
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Club::class);
     }
 }

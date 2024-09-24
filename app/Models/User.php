@@ -66,9 +66,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Team::class);
     }
 
-    public function projects(): hasMany
+    public function clubs(): hasMany
     {
-        return $this->hasMany(Project::class, 'owner_id');
+        return $this->hasMany(Club::class, 'owner_id');
     }
 
     public function grade() {

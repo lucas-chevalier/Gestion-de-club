@@ -77,4 +77,5 @@ class TeamPolicy
     {
         return $user->ownsTeam($team);
     }
+    
 }

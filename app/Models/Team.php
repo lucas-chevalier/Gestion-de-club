@@ -34,7 +34,7 @@ class Team extends JetstreamTeam
         'name',
         'personal_team',
         'user_id',
-        'project_id',
+        'club_id',
 
     ];
 
@@ -49,8 +49,8 @@ class Team extends JetstreamTeam
         'deleted' => TeamDeleted::class,
     ];
 
-    public function project(): BelongsTo
+    public function club(): BelongsTo
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Club::class);
     }
 }

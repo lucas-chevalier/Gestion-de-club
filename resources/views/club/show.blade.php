@@ -43,7 +43,7 @@
                             </div>
                         </div>
 
-                        <!-- Chef du projet -->
+                        <!-- Chef du club -->
                         <div class="mt-4 text-center">
                             <span class="text-blue-700 font-bold text-xl mb-2">Propriétaire</span>
                             <div class="text-blue-800 font-extrabold">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
 
-                        <!-- Liste des membres du projet -->
+                        <!-- Liste des membres du club -->
                         <div class="mt-4 text-center">
                             <span class="text-blue-700 font-bold text-xl mb-2">Liste des membres</span>
                             <ul class="list-disc list-inside mt-2">
@@ -69,7 +69,7 @@
                             </ul>
                         </div>
 
-                        <!-- Statut du projet -->
+                        <!-- Statut du club -->
                         <div class="mt-6 text-center">
                             <div class="text-blue-700 font-bold text-lg mb-2">Statut</div>
                             @switch($club->status_id)
@@ -91,7 +91,7 @@
                             @endswitch
                         </div>
 
-                        <!-- Demande de rejoindre le projet / Inviter des membres -->
+                        <!-- Demande de rejoindre le club / Inviter des membres -->
                         <div class="w-full space-y-2">
                             <div class="mt-6">
                                 @if (Auth::check())
@@ -120,7 +120,7 @@
                                 @endif
                             </div>
 
-                            <!-- Boutons pour supprimer et modifier le projet -->
+                            <!-- Boutons pour supprimer et modifier le club -->
                             @can('update-club', $team)
                                 <div class="w-full mx-auto">
                                     <a href="{{ route("club.update.form", ['id' => $club->id]) }}" class="w-full inline-flex items-center justify-center px-6 py-2 border border-blue-500 text-sm leading-5 font-medium rounded-md text-blue-700 hover:bg-blue-100 focus:outline-none focus:border-blue-600 focus:shadow-outline-blue active:bg-blue-200 transition duration-150 ease-in-out">

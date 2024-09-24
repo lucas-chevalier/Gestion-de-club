@@ -13,7 +13,7 @@
             @csrf
             @method('PUT')
             <div class="mt-6">
-                <x-label for="title" value="{{ __('Nom du projet') }}" class="text-lg" />
+                <x-label for="title" value="{{ __('Nom du club') }}" class="text-lg" />
                 <x-input id="title" class="block w-full mt-2" type="text" name="title" required autofocus  value="{{ $club->title }}"/>
             </div>
 

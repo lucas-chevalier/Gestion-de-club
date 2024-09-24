@@ -26,7 +26,7 @@ class TeamController extends Controller
     {
         try {
             $user = User::findOrFail(Auth::id());
-            $team = Team::where('project_id', $request->id)->firstOrFail();
+            $team = Team::where('club_id', $request->id)->firstOrFail();
 
             TeamJoinRequest::create([
                 'user_id' => $user->id,
