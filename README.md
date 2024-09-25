@@ -1,13 +1,15 @@
-# Propodile
+# CluBoard
 
-Propodile est un projet dédié à l'épreuve du BTS SIO (Services Informatiques aux Organisations), offrant une plateforme permettant de mettre en relation les étudiants au sein de l'école pour collaborer sur des projets communs. Chaque membre de l'école peut s'inscrire, proposer un projet ou demander à rejoindre un projet existant. L'administration de l'école dispose également d'une interface lui permettant de gérer les projets, avec la possibilité de les modifier ou de les supprimer en cas d'abus.
+CluBoard est un projet permettant de créer différents clubs regroupant chacun différentes catégories. Chaque Club devra être approuvée par un administrateur.
 
 ## Contribution
 ----------------------------
 
-- Sterenn Languille : https://github.com/Jotaro15
+- Thibault Autexier : https://github.com/Tibow-DEV
+- Emilien Monceau : https://github.com/emilienmnc
+- Lilian Prospa : https://github.com/Lils91
 - Lucas Chevalier : https://github.com/Lucas-Chevalier
-- Emilien CUNY : https://github.com/ArToXxFR
+
 
 ## Technologies Utilisées
 ----------------------------
@@ -18,18 +20,10 @@ Propodile est un projet dédié à l'épreuve du BTS SIO (Services Informatiques
 - **Composer**: Un gestionnaire de dépendances pour PHP.
 - **Git**: Un système de contrôle de version distribué.
 
-## Documentation
-----------------------------
-
-La documentation complète du projet est disponible [ici](https://github.com/ArToXxFR/propodile/wiki)
 
 ## Tester le projet
 
-Il est possible de tester directement le projet à l'adresse suivante : 
-
-- [propodile.cuny.engineer](https://propodile.cuny.engineer)
-
-Il est également possible de tester l'application avec un compte administrateur avec les identifiants suivants :
+Il est possible de tester l'application avec un compte administrateur avec les identifiants suivants :
 
 Identifiant : admin
 
@@ -41,7 +35,7 @@ jury du BTS SIO de pouvoir tester l'application.
 ## Installation
 ----------------------------
 
-Suivez ces instructions pour configurer et exécuter Propodile sur votre machine locale.
+Suivez ces instructions pour configurer et exécuter CluBoard sur votre machine locale.
 
 ### Prérequis
 
@@ -51,16 +45,16 @@ Suivez ces instructions pour configurer et exécuter Propodile sur votre machine
 
 ### Installation
 
-1. Clonez le dépôt Propodile :
+1. Clonez le dépôt CluBoard :
 
     ```bash
-    git clone https://github.com/ArToXxFR/propodile.git
+    git clone https://github.com/lucas-chevalier/Gestion-de-club
     ```
 
 2. Accédez au répertoire du projet :
 
     ```bash
-    cd propodile/
+    cd CluBoard/
     ```
 
 3. Installez les dépendances PHP avec Composer :
@@ -99,7 +93,7 @@ Suivez ces instructions pour configurer et exécuter Propodile sur votre machine
 
 ### Exécution de l'application
 
-Pour démarrer Propodile, utilisez les commandes suivantes :
+Pour démarrer CluBoard, utilisez les commandes suivantes :
 
 - Lancez le serveur de développement PHP :
 
@@ -113,5 +107,5 @@ Pour démarrer Propodile, utilisez les commandes suivantes :
     npm run dev
     ```
 
-Vous pouvez maintenant accéder à Propodile en vous rendant sur [http://localhost:8000](http://localhost:8000) dans votre navigateur web.
+Vous pouvez maintenant accéder à CluBoard en vous rendant sur [http://localhost:8000](http://localhost:8000) dans votre navigateur web.
 

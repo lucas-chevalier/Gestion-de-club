@@ -1,4 +1,4 @@
-@section('title', 'Page d\'accueil - Propodile')
+@section('title', 'Page d\'accueil - Gestion de club')
 
 <x-app-layout>
     <div class="relative min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
